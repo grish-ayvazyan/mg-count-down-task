@@ -52,16 +52,14 @@ function Countdown() {
     isRunning ? 1000 : null // Only run the interval when isRunning is true
   );
 
+  const timeRemaining = initSeconds && svgHeight - (svgHeight / initSeconds) * parseTime(time);
+
   return (
     <div className="main-wrapper">
       <div className="countdown-container">
         <svg className="time-level" height={svgHeight}>
           <rect width="200" height={svgHeight} fill="#CFE2F3" />
-          <rect
-            width="200"
-            height={svgHeight - (svgHeight / initSeconds) * parseTime(time)}
-            fill="#fff"
-          />
+          <rect width="200" height={timeRemaining} fill="#fff" />
         </svg>
       </div>
       <div className="input-wrapper">
