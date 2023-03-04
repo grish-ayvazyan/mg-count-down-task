@@ -1,10 +1,11 @@
 import React from "react";
+import CountDown from "./components/CountDown";
 
 function App() {
   return (
-    <div>
-      <h1>Count Down Task</h1>
-    </div>
+    <>
+      <CountDown />
+    </>
   );
 }
 
