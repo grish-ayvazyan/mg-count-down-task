@@ -35,8 +35,8 @@ function Countdown() {
 
   useInterval(
     () => {
-      if (parseTime(time)) {
-        const totalSeconds = parseTime(time);
+      const totalSeconds = parseTime(time);
+      if (totalSeconds) {
         const newTotalSeconds = totalSeconds > 0 ? totalSeconds - 1 : 0;
         const newHours = Math.floor(newTotalSeconds / 3600);
         const newMinutes = Math.floor((newTotalSeconds % 3600) / 60);
@@ -49,10 +49,11 @@ function Countdown() {
         handleReset();
       }
     },
-    isRunning ? 1000 : null // Only run the interval when isRunning is true
+    isRunning ? 1000 : null
   );
 
-  const timeRemaining = initSeconds && svgHeight - (svgHeight / initSeconds) * parseTime(time);
+  const timeRemaining =
+    initSeconds && svgHeight - Math.floor((svgHeight / initSeconds) * parseTime(time));
 
   return (
     <div className="main-wrapper">
